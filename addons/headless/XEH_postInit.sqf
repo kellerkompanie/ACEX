@@ -31,6 +31,16 @@
                         _unit setUnitLoadout (typeOf _unit);
                     };
                 };
+
+                // Check if garrison status changed
+                if (_local && (_unit getVariable [QGVAR(disablePath), false] != _unit checkAIFeature "PATH")) then {
+                    doStop _unit;
+                    if (_unit getVariable [QGVAR(disablePath), false]) then {
+                        _unit enableAI "PATH";
+                    } else {
+                        _unit disableAI "PATH";
+                    };
+                };
             }] call CBA_fnc_addClassEventHandler;
         };
     };

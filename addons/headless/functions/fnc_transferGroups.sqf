@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: Jonpas
+ * Author: Jonpas, Schwaggot
  * Transfers AI groups to Headess Client(s).
  *
  * Arguments:
@@ -98,6 +98,11 @@ private _numTransferredHC3 = 0;
             if (GVAR(transferLoadout) == 1) then {
                 _x setVariable [QGVAR(loadout), getUnitLoadout _x, true];
             };
+
+            // Save garrison status
+             if (_x checkAIFeature "PATH") then {
+                 _x setVariable [QGVAR(disablePath), true, true];
+             };
         } forEach (units _x);
     };
 
