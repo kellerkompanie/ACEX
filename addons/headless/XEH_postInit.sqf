@@ -34,7 +34,9 @@
 
                 // Check if garrison status changed
                 private _unitIntendedPathStatus = _unit getVariable [QGVAR(disablePath), false];
-                private _unitCurrentPathStatus = _unit checkAIFeature "PATH";
+                INFO_2("_unitIntendedPathStatus=%1 type=%2", _unitIntendedPathStatus, typeName _unitIntendedPathStatus);
+                private _unitCurrentPathStatus = _unit checkAIFeature "PATH";                
+                INFO_2("_unitCurrentPathStatus=%1 type=%2", _unitCurrentPathStatus, typeName _unitCurrentPathStatus);
                 if (_local && (_unitIntendedPathStatus != _unitCurrentPathStatus)) then {
                     if (_unit getVariable [QGVAR(disablePath), false]) then {
                         _unit enableAI "PATH";
